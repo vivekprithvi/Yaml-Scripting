@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+	MyRestApi: 
+	  Type: "AWS::ApiGateway::RestApi"
+	  Properties:
+		Name: MyRestAPI
+		Description: A test API
+		Body:
+			swagger: "2.0"
+			info:
+			  version: "2017-09-27T21:58:27Z"
+			  title: "PetStore"
+			host: "d06r0cdfi5.execute-api.us-west-1.amazonaws.com"
+			basePath: "/test"
+			schemes:
+			- "https"
+			paths:
+			  /:
+				get:
+				  consumes:
+				  - "application/json"
+				  produces:
+				  - "text/html/json"
+				  responses:
+					200:
+					  description: "200 response"
+					  headers:
+						Content-Type:
+						  type: "string"
+						  type: "string"
+			definitions:
+			  Empty:
+				type: "object"
