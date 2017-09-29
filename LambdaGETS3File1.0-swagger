@@ -1,0 +1,22 @@
+---
+swagger: "2.0"
+info:
+  version: "2017-09-28T00:34:41Z"
+  title: "LambdaGETS3File1.0"
+host: "lr0vua99db.execute-api.us-west-2.amazonaws.com"
+schemes:
+- "https"
+paths:
+  /LambdaGETS3File1.0:
+    get:
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+definitions:
+  Empty:
+    type: "object"
+    title: "Empty Schema"

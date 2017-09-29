@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  PlayersAPI:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: LambdaGETS3File1.0
+      Description: A demo API for Alert
+      Body:
+        swagger: "2.0"
+        info:
+          version: "2017-09-28T00:34:41Z"
+          title: "TestGETS3File"
+        basePath: "/test"
+        schemes:
+        - "https"
+        paths:
+          /:
+            get:
+              produces:
+              - "application/json"
+              responses:
+                '200':
+                  description: "200 response"
+                  schema:
+                    $ref: "#/definitions/Empty"
+              x-amazon-apigateway-integration:
+                responses:
+                  default:
+                    statusCode: "200"
+                uri: "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:463529399199:function:AWSGetApiTest/invocations"
+                passthroughBehavior: "when_no_match"
+                httpMethod: "GET"
+                type: "aws"
+        definitions:
+          Empty:
+            type: "object"
+            title: "Empty Schema"
+  LambdaInvokePermission:
+      Type: 'AWS::Lambda::Permission'
+      Properties:
+        FunctionName: "AWSGetApiTest"
+        Action: 'lambda:InvokeFunction'
+        Principal: "apigateway.amazonaws.com"
